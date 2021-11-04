@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card Generator!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        <h1>Cadastre as cores do seu deck</h1>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ form_row(form) }}
+        </div>
+        <div class="col" id="some-custom-id">
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

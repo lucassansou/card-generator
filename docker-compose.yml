@@ -1,0 +1,30 @@
+version: '3.8'
+
+volumes:
+  cache:
+  log:
+  vendor:
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=database
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_PASSWORD=password
+      - MYSQL_USER=user
+    ports:
+      - "33061:3306"
+  app:
+    ports:
+      - "8080:80"
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/app/public
+    build:
+      context: .
+    volumes:
+      - .:/var/www/html
+      - ./config/vhost.conf:/etc/apache2/sites-available/000-default.conf
+      - cache:/var/www/html/app/var/cache
+      - log:/var/www/html/app/var/log
+      - vendor:/var/www/html/app/vendor
