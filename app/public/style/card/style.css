@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #cccbcb;
+}
+
+h3 {
+    margin: 0px;
+}
+
+.card-container {
+    border: black 2px solid;
+    border-radius: 10px;
+    margin: auto;
+    background-size: cover;
+}
+
+#card-body{
+    height:450px;
+    width: 300px;
+    padding: 10px;
+    border: black 10px solid;
+    margin-top: 50px;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card-name {
+
+}
+
+.card-cost {
+
+}
+
+#card-image {
+    height:220px;
+    width: 280px;
+}
+
+.card-type {
+    margin: 5px 10px;
+}
+
+#card-description {
+    height:150px;
+    width: 280px;
+    background-color: #e1decc;
+}
+
+#card-description > p {
+    margin: 10px;
+}
+
+.card-stats {
+    text-align: right;
+}
+
+.card-stats > p {
+    margin: 0px;
+    margin-right: 10px;
+}
+
+.azul {
+    background-color: #0d5aa7;
+}
+
+.branco {
+    background-color: #f6efe1;
+}
+
+.verde {
+    background-color: darkgreen;
+}
+
+.vermelho {
+    background-color: #ad1a1a;
+}
+
+.preto {
+    background-color: #2c2a2a;
+}

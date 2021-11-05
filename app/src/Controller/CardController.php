@@ -17,6 +17,30 @@ class CardController extends AbstractController
     /**
      * @Route("/")
      */
+    public function card(Request $request) : Response
+    {
+        $card = new Card();
+
+        $form = $this->createForm(CardType::class, $card);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $card = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($card);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('show_card', ['id' => $card->getId()]);
+        }
+
+        return $this->renderForm('card/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/color")
+     */
     public function index(Request $request): Response
     {
         $card_color = new CardColor();
@@ -38,31 +62,7 @@ class CardController extends AbstractController
     }
 
     /**
-     * @Route("/card")
-     */
-    public function card(Request $request) : Response
-    {
-        $card = new Card();
-
-        $form = $this->createForm(CardType::class, $card);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $card = $form->getData();
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($card);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('show/{id}', ['id' => $card]);
-        }
-
-        return $this->renderForm('card/new.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    /**
-     * @Route("/show/{id}")
+     * @Route("/show/{id}", name="show_card")
      */
     public function cardShow(int $id, CardRepository $cardRepository) : Response
     {
